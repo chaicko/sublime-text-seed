@@ -33,9 +33,8 @@ def main():
   # - copy configuration to '~/.config/sublime-text-3'
   if platform == 'Linux':
     print('Linux detected...')
-    app_path = 'sublime'
     config_path = os.path.expanduser('~') + '/.config/sublime-text-3'
-    if not Helpers.is_installed(app_path):
+    if not (Helpers.is_installed('sublime') or Helpers.is_installed('subl')):
       print('Sublime not installed...')
       install_linux(app_path)
     config(config_path)
@@ -81,10 +80,12 @@ def install_osx(app_path):
 def install_linux(app_path):
   try:
     subprocess.call(['sudo', 'id', '-nu'], stdout=subprocess.PIPE)
+    print('Adding Sublime-Text PPA...')
+    subprocess.call(['sudo', 'apt-add-repository', '-y', 'ppa:webupd8team/sublime-text-3'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     print('Updating sources...')
     subprocess.call(['sudo', 'apt-get', 'update'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     print('Installing Sublime Text...')
-    subprocess.call(['sudo', 'apt-get', 'install', 'sublime-text'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    subprocess.call(['sudo', 'apt-get', 'install', 'sublime-text-installer'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     print('Installation complete...')
   except OSError as e:
     print(e)

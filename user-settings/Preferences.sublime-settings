@@ -1,10 +1,12 @@
 {
+	"auto_complete_delay": 5,
+    "auto_complete_selector": "source, text",
 	// set Predawn as the theme
 	"theme": "predawn-DEV.sublime-theme",
 	"color_scheme": "Packages/User/SublimeLinter/predawn (SL).tmTheme",
 	// indicatior when a file has been modified but not saved
 	"highlight_modified_tabs": true,
-	"tab_size": 2,
+	"tab_size": 4,
 	// off by default to avoid polluting history during committs
 	"translate_tabs_to_spaces": true,
 	// "draw_white_space": "all",
@@ -18,5 +20,35 @@
 	"ignored_packages": [
 		// ignore vim-style commands
 		"Vintage"
-	]
+	],
+	"create_window_at_startup": false,
+    "folder_exclude_patterns":
+    [
+        ".svn",
+        ".git",
+        ".DS_Store",
+        "__pycache__",
+        "*.pyc",
+        "*.pyo",
+        "*.exe",
+        "*.dll",
+        "*.obj",
+        "*.o",
+        "*.a",
+        "*.lib",
+        "*.so",
+        "*.dylib",
+        "*.ncb",
+        "*.sdf",
+        "*.suo",
+        "*.pdb",
+        "*.idb",
+        "*.psd"
+    ],
+    "open_files_in_new_window": false,
+    "rulers":
+    [
+        80
+    ],
+    "word_wrap": true
 }
